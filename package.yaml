@@ -1,0 +1,69 @@
+name:                lll
+version:             0.1.0.0
+github:              "evincarofautumn/lll"
+license:             MIT
+author:              "Jon Purdy"
+maintainer:          "evincarofautumn@gmail.com"
+copyright:           "Jon Purdy"
+
+extra-source-files:
+- README.md
+
+synopsis:            LLL Programming Language
+category:            Language
+description:         See the README on GitHub at <https://github.com/evincarofautumn/lll#readme>
+
+ghc-options:
+- -Wall
+
+default-extensions:
+- BlockArguments
+- DeriveAnyClass
+- DeriveFunctor
+- DeriveGeneric
+- DerivingStrategies
+- GADTs
+- GeneralizedNewtypeDeriving
+- LambdaCase
+- NumericUnderscores
+- OverloadedStrings
+- RankNTypes
+- ScopedTypeVariables
+- TypeApplications
+- ViewPatterns
+
+dependencies:
+- base >= 4.7 && < 5
+- async >= 2.2
+- containers >= 0.6
+- pretty >= 1.1
+- text >= 1.2
+- transformers >= 0.5
+
+library:
+  source-dirs: lib
+
+executables:
+  lll:
+    main:                Main.hs
+    source-dirs:         src
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - lll
+
+tests:
+  lll-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+    dependencies:
+    - HUnit >= 1.6
+    - QuickCheck >= 2.13
+    - hspec >= 2.7
+    - lll
